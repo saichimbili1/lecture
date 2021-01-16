@@ -18,6 +18,7 @@ function initMap() {
             zoom: 10,
             center: {lat: 41.846036, lng: -72.568807}
         });
+var old_position={lat: 41.846036, lng: -72.568807};
 if (navigator.geolocation) {
     navigator.geolocation.watchPosition(set_my_position);
 }
@@ -31,13 +32,14 @@ else {
 }
 
 function set_my_position(position){
-
+    old_position.setMap(null);
     var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
     new google.maps.Marker({
     position: pos,
     map,
     title: "Hello World!",
   });
+  old_position = Marker;
 }
 
 
@@ -48,7 +50,7 @@ function set_my_position(position){
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
 #map {
-height: 100%;
+    height: 100%;
 }
 
 /* Optional: Makes the sample page fill the window. */
