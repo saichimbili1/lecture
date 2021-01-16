@@ -12,12 +12,14 @@
 
 let map, infoWindow;
 var old_position;
+const iconBase ="https://developers.google.com/maps/documentation/javascript/examples/full/images/";
 function initMap() {
-
    map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 10,
-            center: {lat: 41.846036, lng: -72.568807}
+            zoom: 15,
+            center: {lat: -34.397, lng: 150.644 }
         });
+        infoWindow = new google.maps.InfoWindow();
+
         var post = {lat: 41.846036 , lng: -72.568807};
    old_position = new google.maps.Marker({
     position: post ,
@@ -32,18 +34,27 @@ if (navigator.geolocation) {
 else {
     alert("Geolocation doesn't work in your browser");
 }
-
+map.setCenter(20.5937, 78.9629);
 
 
 
 }
 
 function set_my_position(position){
+    
     old_position.setMap(null);
+    var x  = map.getCenter();
+    
     var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    map.setCenter(pos);
+    
+    infoWindow.open(map);
+
     var marker= new google.maps.Marker({
     position: pos,
     map,
+    icon: iconBase + "parking_lot_maps.png",
+    label:"C",
     title: "Hello World!",
   });
   old_position = marker;
