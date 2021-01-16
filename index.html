@@ -33,6 +33,11 @@ else {
 function set_my_position(position){
 
     var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    new google.maps.Marker({
+    position: pos,
+    map,
+    title: "Hello World!",
+  });
 }
 
 
