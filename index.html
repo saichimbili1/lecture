@@ -16,7 +16,7 @@ const iconBase ="https://developers.google.com/maps/documentation/javascript/exa
 function initMap() {
    map = new google.maps.Map(document.getElementById('map'), {
             zoom: 15,
-            center: {lat:-34.397, lng: 150.644 }
+            center: {lat: -34.397, lng: 150.644 }
         });
         infoWindow = new google.maps.InfoWindow();
 
@@ -34,7 +34,7 @@ if (navigator.geolocation) {
 else {
     alert("Geolocation doesn't work in your browser");
 }
-map.setCenter(20.5937, 78.9629);
+
 
 
 
@@ -46,7 +46,7 @@ function set_my_position(position){
     var x  = map.getCenter();
     
     var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-    map.setCenter(pos);
+    map.setCenter(pos,22);
     
     infoWindow.open(map);
 
