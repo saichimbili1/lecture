@@ -4,25 +4,21 @@
     <title>Simple Map</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDv7w2JwklI-bRgmiNQgvJjVWlAZQwzYPA&callback=initMap&libraries=&v=weekly"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAedUfbSBovY4hI_G7uI6q3JVv1Jc1LmS8&callback=initMap&libraries=&v=weekly"
       defer
     ></script>
 
   <script>
 
 let map, infoWindow;
-var old_position = new google.maps.Marker({
-    position: {lat: 41.846036, lng: -72.568807},
-    map,
-    title: "Hello",
-  });
+
 function initMap() {
 
    map = new google.maps.Map(document.getElementById('map'), {
             zoom: 10,
             center: {lat: 41.846036, lng: -72.568807}
         });
-
+        
 
 if (navigator.geolocation) {
     navigator.geolocation.watchPosition(set_my_position);
@@ -37,14 +33,14 @@ else {
 }
 
 function set_my_position(position){
-    old_position.setMap(null);
+   
     var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
     var marker= new google.maps.Marker({
     position: pos,
     map,
     title: "Hello World!",
   });
-  old_position = marker;
+  
 }
 
 
